@@ -7,10 +7,11 @@ const Editor = React.createClass({
   componentDidMount() {
     this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), {
       mode: 'javascript',
-      lineNumbers: false,
+      lineNumbers: true,
       lineWrapping: true,
       smartIndent: false,
       matchBrackets: true,
+      tabSize: 2,
       theme: this.props.theme,
       readOnly: this.props.readOnly
     });
