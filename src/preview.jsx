@@ -37,15 +37,16 @@ const Preview = React.createClass({
     _compileCode() {
       if (this.props.noRender) {
         return babel.transform(
-            '(function(' + Object.keys(this.props.scope).join(',') + ', mountNode) {' +
-              'return React.createClass({' +
-                'render: function(){' +
-                  'return (' +
-                    this.props.code +
-                  ')' +
-                '}' +
-              '});' +
-            '\n});',
+            `(function(${Object.keys(this.props.scope).join(',')}, mountNode) {
+              return React.createClass({
+                getInitialState(){ return {} },
+                render: function(){
+                  return (
+                    ${this.props.code}
+                  )
+                }
+              });
+            });`,
         this.props.babelConfig
         ).code;
       } else {
@@ -70,8 +71,8 @@ const Preview = React.createClass({
 
         var scope = [];
 
-        for(var s in this.props.scope) {
-          if(this.props.scope.hasOwnProperty(s)){
+        for (var s in this.props.scope) {
+          if (this.props.scope.hasOwnProperty(s)){
             scope.push(this.props.scope[s]);
           }
         }
