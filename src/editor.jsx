@@ -13,7 +13,8 @@ CodeMirror.defineMode('jsx', function(config) {
         {
           open: '{', close: '}',
           mode: CodeMirror.getMode(config, 'javascript'),
-          parseDelimiters: false
+          parseDelimiters: false,
+          innerStyle: 'js'
         }),
       parseDelimiters: true
     });
