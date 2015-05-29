@@ -3,27 +3,27 @@
 
 import React from 'react/addons';
 
-CodeMirror.defineMode('jsx', function(config) {
-  return CodeMirror.multiplexingMode(
-    CodeMirror.getMode(config, 'javascript'),
-    {
-      open: '<', close: '>',
-      mode: CodeMirror.multiplexingMode(
-        CodeMirror.getMode(config, {name: 'xml', htmlMode: true}),
-        {
-          open: '{', close: '}',
-          mode: CodeMirror.getMode(config, 'javascript'),
-          parseDelimiters: false,
-          innerStyle: 'js'
-        }),
-      parseDelimiters: true
-    });
-});
+// CodeMirror.defineMode('jsx', function(config) {
+//   return CodeMirror.multiplexingMode(
+//     CodeMirror.getMode(config, 'javascript'),
+//     {
+//       open: '<', close: '>',
+//       mode: CodeMirror.multiplexingMode(
+//         CodeMirror.getMode(config, {name: 'xml', htmlMode: true}),
+//         {
+//           open: '{', close: '}',
+//           mode: CodeMirror.getMode(config, 'javascript'),
+//           parseDelimiters: false,
+//           innerStyle: 'js'
+//         }),
+//       parseDelimiters: true
+//     });
+// });
 
 const Editor = React.createClass({
   componentDidMount() {
     this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), {
-      mode: 'jsx',
+      mode: 'javascript',
       lineNumbers: false,
       lineWrapping: true,
       smartIndent: false,
