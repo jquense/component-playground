@@ -14,7 +14,6 @@ const ReactPlayground = React.createClass({
     collapsableCode: React.PropTypes.bool,
     docClass: React.PropTypes.renderable,
     propDescriptionMap: React.PropTypes.string,
-    theme: React.PropTypes.string,
     noRender: React.PropTypes.bool,
     es6Console: React.PropTypes.bool,
     babelConfig: React.PropTypes.object
@@ -23,6 +22,7 @@ const ReactPlayground = React.createClass({
   getDefaultProps() {
     return {
       theme: 'monokai',
+      previewBefore: true,
       noRender: false
     }
   },
@@ -45,42 +45,52 @@ const ReactPlayground = React.createClass({
   },
 
   render() {
-    return (
-      <div className={"playground" + (this.props.collapsableCode ? " collapsableCode" : "")}>
-        {this.props.docClass ?
-          <Doc
-            componentClass={this.props.docClass}
-            propDescriptionMap={this.props.propDescriptionMap} />
-          : ""
-        }
-        <div className={"playgroundCode"  + (this.state.expandedCode ? " expandedCode" : "")}>
-          <Editor
-            onChange={this._handleCodeChange}
-            className="playgroundStage"
-            codeText={this.state.code}
-            theme={this.props.theme} />
-        </div>
-        {this.props.collapsableCode ?
-          <div className="playgroundToggleCodeBar">
-            <span className="playgroundToggleCodeLink" onClick={this._toggleCode}>
-              {this.state.expandedCode ? "collapse" : "expand"}
-            </span>
-          </div>
-          : ""
-        }
-        <div className="playgroundPreview">
-          {this.props.es6Console ?
-            <EsPreview
-              code={this.state.code}
-              scope={this.props.scope} />
-          :
+
+    let preview = (
+      <div className="playgroundPreview">
+        { this.props.es6Console ?
+          <EsPreview
+            code={this.state.code}
+            scope={this.props.scope} />
+        :
           <Preview
             code={this.state.code}
             scope={this.props.scope}
             babelConfig={this.props.babelConfig}
             noRender={this.props.noRender} />
-          }
+        }
+      </div>
+    );
+
+    return (
+      <div className={"playground" + (this.props.collapsableCode ? " collapsableCode" : "")}>
+        {
+          this.props.previewBefore && preview
+        }
+        <div className={"playgroundCode"  + (this.state.expandedCode ? " expandedCode" : "")}>
+          <Editor
+            {...this.props}
+            className="playgroundStage"
+            onChange={this._handleCodeChange}
+            codeText={this.state.code}
+          />
         </div>
+        {
+          !!this.props.collapsableCode &&
+            <div className="playgroundToggleCodeBar">
+              <span className="playgroundToggleCodeLink" onClick={this._toggleCode}>
+                {this.state.expandedCode ? "collapse" : "expand"}
+              </span>
+            </div>
+        }
+        {
+          !this.props.previewBefore && preview
+        }
+        { !!this.props.docClass &&
+            <Doc
+              componentClass={this.props.docClass}
+              propDescriptionMap={this.props.propDescriptionMap} />
+        }
       </div>
     );
   },

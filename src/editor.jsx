@@ -3,35 +3,27 @@
 
 import React from 'react/addons';
 
-// CodeMirror.defineMode('jsx', function(config) {
-//   return CodeMirror.multiplexingMode(
-//     CodeMirror.getMode(config, 'javascript'),
-//     {
-//       open: '<', close: '>',
-//       mode: CodeMirror.multiplexingMode(
-//         CodeMirror.getMode(config, {name: 'xml', htmlMode: true}),
-//         {
-//           open: '{', close: '}',
-//           mode: CodeMirror.getMode(config, 'javascript'),
-//           parseDelimiters: false,
-//           innerStyle: 'js'
-//         }),
-//       parseDelimiters: true
-//     });
-// });
 
 const Editor = React.createClass({
-  componentDidMount() {
-    this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), {
+
+  getDefaultProps(){
+    return {
+      readOnly: false,
       mode: 'javascript',
-      lineNumbers: false,
       lineWrapping: true,
-      smartIndent: false,
+      lineNumbers: false,
       matchBrackets: true,
+      smartIndent: false,
       tabSize: 2,
-      theme: this.props.theme,
-      readOnly: this.props.readOnly
-    });
+    }
+  },
+
+  componentDidMount() {
+    var { codeText, onChange, className, style, ...props } = this.props;
+
+    this.editor = CodeMirror.fromTextArea(
+      this.refs.editor.getDOMNode(), props);
+
     this.editor.on('change', this._handleChange);
   },
 
