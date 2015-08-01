@@ -27,8 +27,8 @@ const ReactPlayground = React.createClass({
       theme: 'monokai',
       previewBefore: true,
       noRender: false,
-      expandedText: 'hide code',
-      collapsedText: 'show code'
+      collapsedText: 'hide code',
+      expandedText: 'show code'
     }
   },
 
@@ -83,9 +83,9 @@ const ReactPlayground = React.createClass({
         {
           !!this.props.collapsableCode &&
             <div className="playgroundToggleCodeBar">
-              <span className="playgroundToggleCodeLink" onClick={this._toggleCode}>
+              <a href='#' className="playgroundToggleCodeLink" onClick={this._toggleCode}>
                 {this.state.expandedCode ? this.props.collapsedText : this.props.expandedText }
-              </span>
+              </a>
             </div>
         }
         {
