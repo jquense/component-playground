@@ -16,14 +16,19 @@ const ReactPlayground = React.createClass({
     propDescriptionMap: React.PropTypes.string,
     noRender: React.PropTypes.bool,
     es6Console: React.PropTypes.bool,
-    babelConfig: React.PropTypes.object
+    babelConfig: React.PropTypes.object,
+
+    expandedText: React.PropTypes.string,
+    collapsedText: React.PropTypes.string,
   },
 
   getDefaultProps() {
     return {
       theme: 'monokai',
       previewBefore: true,
-      noRender: false
+      noRender: false,
+      expandedText: 'hide code',
+      collapsedText: 'show code'
     }
   },
 
@@ -79,7 +84,7 @@ const ReactPlayground = React.createClass({
           !!this.props.collapsableCode &&
             <div className="playgroundToggleCodeBar">
               <span className="playgroundToggleCodeLink" onClick={this._toggleCode}>
-                {this.state.expandedCode ? "collapse" : "expand"}
+                {this.state.expandedCode ? this.props.collapsedText : this.props.expandedText }
               </span>
             </div>
         }
