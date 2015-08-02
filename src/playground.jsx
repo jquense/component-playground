@@ -43,9 +43,12 @@ const ReactPlayground = React.createClass({
     this.setState({ code });
   },
 
-  _toggleCode() {
+  _toggleCode(e) {
+    e.preventDefault()
     this.setState({
       expandedCode: !this.state.expandedCode
+    }, ()=> {
+      this.refs.editor.refresh()
     });
   },
 
@@ -74,6 +77,7 @@ const ReactPlayground = React.createClass({
         }
         <div className={"playgroundCode"  + (this.state.expandedCode ? " expandedCode" : "")}>
           <Editor
+            ref='editor'
             {...this.props}
             className="playgroundStage"
             onChange={this._handleCodeChange}
