@@ -1,7 +1,6 @@
 /* eslint new-cap:0 no-unused-vars:0 */
-'use strict';
-
-import React from 'react/addons';
+import React from 'react';
+import { render, unmountComponentAtNode } from 'react-dom'
 import babel from 'babel-core/browser';
 import { format } from 'util'
 
@@ -75,10 +74,10 @@ const Preview = React.createClass({
     },
 
     _executeCode() {
-      var mountNode = this.refs.mount.getDOMNode();
+      var mountNode = this.refs.mount;
 
       try {
-        React.unmountComponentAtNode(mountNode);
+        unmountComponentAtNode(mountNode);
       } catch (e) { }
 
       try {
@@ -94,10 +93,10 @@ const Preview = React.createClass({
         var Component = React.createElement(
             eval(compiledCode).apply(null, scope)
           );
-        React.render(Component, mountNode);
+        render(Component, mountNode);
       } catch (err) {
         this._setTimeout(function() {
-          React.render(
+          render(
             <div className="playgroundError">{err.toString()}</div>,
             mountNode
           );
@@ -106,7 +105,7 @@ const Preview = React.createClass({
     },
 
     render() {
-        return <div ref="mount" />;
+      return <div ref="mount" />;
     }
 });
 

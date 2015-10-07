@@ -1,8 +1,5 @@
 /* eslint new-cap:0 no-unused-vars:0 */
-'use strict';
-
-import React from 'react/addons';
-
+import React from 'react';
 
 const Editor = React.createClass({
 
@@ -22,7 +19,7 @@ const Editor = React.createClass({
     var { codeText, onChange, className, style, ...props } = this.props;
 
     this.editor = CodeMirror.fromTextArea(
-      this.refs.editor.getDOMNode(), props);
+      this.refs.editor, props);
 
     this.editor.on('change', this._handleChange);
   },

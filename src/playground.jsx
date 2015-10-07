@@ -1,19 +1,15 @@
 /* eslint new-cap:0 no-unused-vars:0 */
-'use strict';
-import React from 'react/addons';
+import React from 'react';
 
 import Editor from "./editor";
 import Preview from "./preview";
 import EsPreview from "./es6-preview";
-import Doc from "./doc";
 
 const ReactPlayground = React.createClass({
   propTypes: {
     codeText: React.PropTypes.string.isRequired,
     scope: React.PropTypes.object.isRequired,
     collapsableCode: React.PropTypes.bool,
-    docClass: React.PropTypes.renderable,
-    propDescriptionMap: React.PropTypes.string,
     noRender: React.PropTypes.bool,
     es6Console: React.PropTypes.bool,
     babelConfig: React.PropTypes.object,
@@ -75,7 +71,10 @@ const ReactPlayground = React.createClass({
         {
           this.props.previewBefore && preview
         }
-        <div className={"playgroundCode"  + (this.state.expandedCode ? " expandedCode" : "")}>
+        <div
+          className={"playgroundCode"  + (this.state.expandedCode ? " expandedCode" : "")}
+          aria-hidden={!this.state.expandedCode}
+        >
           <Editor
             ref='editor'
             {...this.props}
@@ -94,11 +93,6 @@ const ReactPlayground = React.createClass({
         }
         {
           !this.props.previewBefore && preview
-        }
-        { !!this.props.docClass &&
-            <Doc
-              componentClass={this.props.docClass}
-              propDescriptionMap={this.props.propDescriptionMap} />
         }
       </div>
     );
