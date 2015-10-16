@@ -54,14 +54,14 @@ const ReactPlayground = React.createClass({
       <div className="playgroundPreview">
         { this.props.es6Console ?
           <EsPreview
+            {...this.props}
             code={this.state.code}
-            scope={this.props.scope} />
+          />
         :
           <Preview
+            {...this.props}
             code={this.state.code}
-            scope={this.props.scope}
-            babelConfig={this.props.babelConfig}
-            noRender={this.props.noRender} />
+          />
         }
       </div>
     );

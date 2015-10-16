@@ -11,7 +11,7 @@ const Editor = React.createClass({
       lineNumbers: false,
       matchBrackets: true,
       smartIndent: false,
-      tabSize: 2,
+      tabSize: 2
     }
   },
 
