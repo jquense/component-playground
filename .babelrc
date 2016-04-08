@@ -1,6 +1,3 @@
 {
-  "stage": 1,
-  "loose": [
-    "all"
-  ]
+  "presets": ["jason"]
 }

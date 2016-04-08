@@ -1,9 +1,8 @@
 /* eslint new-cap:0 no-unused-vars:0 */
 import React from 'react';
 
-import Editor from "./editor";
-import Preview from "./preview";
-import EsPreview from "./es6-preview";
+import Editor from './Editor';
+import Preview from './Preview';
 
 const ReactPlayground = React.createClass({
   propTypes: {
@@ -20,7 +19,7 @@ const ReactPlayground = React.createClass({
 
   getDefaultProps() {
     return {
-      theme: 'monokai',
+      theme: 'oceanicnext',
       previewBefore: true,
       noRender: false,
       collapsedText: 'hide code',
@@ -51,42 +50,35 @@ const ReactPlayground = React.createClass({
   render() {
 
     let preview = (
-      <div className="playgroundPreview">
-        { this.props.es6Console ?
-          <EsPreview
-            {...this.props}
-            code={this.state.code}
-          />
-        :
-          <Preview
-            {...this.props}
-            code={this.state.code}
-          />
-        }
+      <div className='playgroundPreview'>
+        <Preview
+          {...this.props}
+          code={this.state.code}
+        />
       </div>
     );
 
     return (
-      <div className={"playground" + (this.props.collapsableCode ? " collapsableCode" : "")}>
+      <div className={'playground' + (this.props.collapsableCode ? ' collapsableCode' : '')}>
         {
           this.props.previewBefore && preview
         }
         <div
-          className={"playgroundCode"  + (this.state.expandedCode ? " expandedCode" : "")}
+          className={'playgroundCode'  + (this.state.expandedCode ? ' expandedCode' : '')}
           aria-hidden={!this.state.expandedCode}
         >
           <Editor
             ref='editor'
             {...this.props}
-            className="playgroundStage"
+            className='playgroundStage'
             onChange={this._handleCodeChange}
             codeText={this.state.code}
           />
         </div>
         {
           !!this.props.collapsableCode &&
-            <div className="playgroundToggleCodeBar">
-              <a href='#' className="playgroundToggleCodeLink" onClick={this._toggleCode}>
+            <div className='playgroundToggleCodeBar'>
+              <a href='#' className='playgroundToggleCodeLink' onClick={this._toggleCode}>
                 {this.state.expandedCode ? this.props.collapsedText : this.props.expandedText }
               </a>
             </div>

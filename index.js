@@ -1,3 +1,3 @@
-var Playground = require('./lib/playground');
+var Playground = require('./lib/Playground');
 
 module.exports = Playground;

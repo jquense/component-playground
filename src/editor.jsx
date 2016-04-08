@@ -1,12 +1,17 @@
-/* eslint new-cap:0 no-unused-vars:0 */
 import React from 'react';
+import CodeMirror from 'codemirror';
+
+import 'codemirror/mode/htmlmixed/htmlmixed';
+import 'codemirror/mode/css/css';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/jsx/jsx';
 
 const Editor = React.createClass({
 
-  getDefaultProps(){
+  getDefaultProps() {
     return {
       readOnly: false,
-      mode: 'javascript',
+      mode: 'jsx',
       lineWrapping: true,
       lineNumbers: false,
       matchBrackets: true,
@@ -36,7 +41,7 @@ const Editor = React.createClass({
     }
   },
 
-  refresh(){
+  refresh() {
     this.editor.refresh()
   },
 
