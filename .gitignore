@@ -1,6 +1,8 @@
 ### SublimeText ###
 *.sublime-workspace
 
+npm-debug.log
+
 ### OSX ###
 .DS_Store
 .AppleDouble
