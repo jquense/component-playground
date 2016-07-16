@@ -65,6 +65,10 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
   color: #C0C5CE;
 }
 
+.CodeMirror.cm-s-oceanicnext pre {
+  background: transparent;
+}
+
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
   text-shadow: none;
