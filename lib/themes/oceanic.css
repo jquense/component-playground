@@ -61,8 +61,12 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  background: #1B2B34;
   color: #C0C5CE;
+}
+
+.prism-theme-oceanicnext code,
+.prism-theme-oceanicnext pre {
+  background: #1B2B34;
 }
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
