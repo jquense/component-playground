@@ -4,24 +4,8 @@ import Prism from 'prismjs'
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-css-extras';
 import 'prismjs/components/prism-javascript';
-
-
-Prism.languages.insertBefore('jsx', 'keyword', {
-  'var': /\b(this)\b/g,
-  'block-keyword': /\b(if|else|while|for|function)\b/g,
-  'primitive': /\b(true|false|null|undefined)\b/g,
-  'function': Prism.languages.function,
-  'def':{
-		pattern: /((?:var|let|const)\s+)([^\s]+)/g,
-		lookbehind: true
-	},
-});
-
-Prism.languages.insertBefore('jsx', {
-  'qualifier': /\b[A-Z][a-z0-9_]+/g,
-});
-
 import 'prismjs/components/prism-jsx';
+
 
 export default React.createClass({
 

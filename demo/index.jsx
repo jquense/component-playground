@@ -1,15 +1,13 @@
-/* eslint new-cap:0 no-unused-vars:0 */
-'use strict';
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Playground = require('../src/Playground');
-var CodeBlock = require('../src/CodeBlock');
-var Editor = require('../src/Editor');
-var Button = require('./components/button');
+import 'babel-polyfill';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Playground from '../src/Playground';
+import CodeBlock from '../src/CodeBlock';
+import Button from './components/Button';
 
-require('codemirror/lib/codemirror.css');
-require('../src/themes/oceanic.css');
-require('./styles/demo.css');
+import 'codemirror/lib/codemirror.css';
+import '../src/themes/oceanic.css';
+import './styles/demo.css';
 
 var componentExample = require('raw!./examples/component.example');
 var es6Example = require('raw!./examples/es6.example');
@@ -22,20 +20,27 @@ var Index = React.createClass({
           {componentExample}
         </CodeBlock>
         <Playground
-          codeText={componentExample}
           readOnly='nocursor'
+          code={componentExample}
           scope={{React, ReactDOM, Button}}
         />
         <Playground
-          codeText={componentExample}
+          collapsible
+          code={componentExample}
           scope={{React, ReactDOM, Button}}
-          collapsableCode={true}
         />
         <Playground
-          codeText={componentExample}
+          collapsible
+          code={componentExample}
           scope={{React, ReactDOM, Button}}
-          collapsableCode={true} />
-        <Playground codeText={es6Example} es6Console={true} scope={{React, ReactDOM, Button}} />
+        />
+        <Playground
+          code={es6Example}
+          style={{ display: 'flex' }}
+        >
+          <Playground.Editor style={{ flex: 2 }} />
+          <Playground.Console style={{ flex: 1 }} />
+        </Playground>
       </div>
     );
   }
