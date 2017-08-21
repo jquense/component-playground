@@ -1,11 +1,7 @@
+/* eslint-disable global-require */
+
 import React from 'react';
 import cn from 'classnames';
-import CodeMirror from 'codemirror';
-
-import 'codemirror/mode/htmlmixed/htmlmixed';
-import 'codemirror/mode/css/css';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/jsx/jsx';
 
 class Editor extends React.Component {
   static propTypes = {
@@ -33,6 +29,13 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
+    const CodeMirror = require('codemirror');
+
+    require('codemirror/mode/htmlmixed/htmlmixed');
+    require('codemirror/mode/css/css');
+    require('codemirror/mode/javascript/javascript');
+    require('codemirror/mode/jsx/jsx');
+
     let { code, theme, readOnly, mode, editorOptions } = this.props;
 
     if (code && this.context.playgroundChange) {
