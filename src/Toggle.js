@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  expandText: React.PropTypes.string,
-  collapseText: React.PropTypes.string,
+  expandText: PropTypes.string,
+  collapseText: PropTypes.string,
 };
 
 function Toggle({ children, expandText, collapseText, ...props }, context) {
@@ -29,8 +30,8 @@ function Toggle({ children, expandText, collapseText, ...props }, context) {
 
 Toggle.propTypes = propTypes;
 Toggle.contextTypes = {
-  playgroundToggle: React.PropTypes.func,
-  playgroundCollapsed: React.PropTypes.bool,
+  playgroundToggle: PropTypes.func,
+  playgroundCollapsed: PropTypes.bool,
 };
 
 Toggle.defaultProps ={

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cn from 'classnames';
 
@@ -8,25 +9,25 @@ import Toggle from './Toggle';
 
 class Playground extends React.Component {
   static propTypes = {
-    code: React.PropTypes.string,
-    scope: React.PropTypes.object,
-    collapsible: React.PropTypes.bool,
-    noRender: React.PropTypes.bool,
-    babelConfig: React.PropTypes.object,
-    editorOptions: React.PropTypes.object,
+    code: PropTypes.string,
+    scope: PropTypes.object,
+    collapsible: PropTypes.bool,
+    noRender: PropTypes.bool,
+    babelConfig: PropTypes.object,
+    editorOptions: PropTypes.object,
 
-    readOnly: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.string
+    readOnly: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string
     ]),
-    mode: React.PropTypes.string,
+    mode: PropTypes.string,
   }
 
   static childContextTypes = {
-    playgroundToggle: React.PropTypes.func,
-    playgroundCollapsed: React.PropTypes.bool,
-    playgroundCode: React.PropTypes.string,
-    playgroundChange: React.PropTypes.func,
+    playgroundToggle: PropTypes.func,
+    playgroundCollapsed: PropTypes.bool,
+    playgroundCode: PropTypes.string,
+    playgroundChange: PropTypes.func,
   };
 
   constructor(...args) {

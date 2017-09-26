@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cn from 'classnames';
@@ -72,10 +73,10 @@ export default function ConsolePreview(
 }
 
 ConsolePreview.propTypes = {
-  code: React.PropTypes.string,
-  scope: React.PropTypes.object,
+  code: PropTypes.string,
+  scope: PropTypes.object,
 }
 
 ConsolePreview.contextTypes = {
-  playgroundCode: React.PropTypes.string,
+  playgroundCode: PropTypes.string,
 }

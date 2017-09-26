@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 /* eslint-disable global-require */
 
 import React from 'react';
@@ -5,15 +6,15 @@ import cn from 'classnames';
 
 class Editor extends React.Component {
   static propTypes = {
-    readOnly: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.string
+    readOnly: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string
     ]),
-    mode: React.PropTypes.string.isRequired,
-    editorOptions: React.PropTypes.object,
-    onChange: React.PropTypes.func,
-    code: React.PropTypes.string,
-    theme: React.PropTypes.string,
+    mode: PropTypes.string.isRequired,
+    editorOptions: PropTypes.object,
+    onChange: PropTypes.func,
+    code: PropTypes.string,
+    theme: PropTypes.string,
   }
 
   static defaultProps = {
@@ -23,9 +24,9 @@ class Editor extends React.Component {
   }
 
   static contextTypes = {
-    playgroundCode: React.PropTypes.string,
-    playgroundChange: React.PropTypes.func,
-    playgroundCollapsed: React.PropTypes.bool,
+    playgroundCode: PropTypes.string,
+    playgroundChange: PropTypes.func,
+    playgroundCollapsed: PropTypes.bool,
   }
 
   componentDidMount() {

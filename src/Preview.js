@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cn from 'classnames';
@@ -6,10 +7,10 @@ import { execute } from './compile';
 
 class Preview extends React.Component {
   static propTypes = {
-    code: React.PropTypes.string,
-    scope: React.PropTypes.object,
-    noRender: React.PropTypes.bool,
-    babelConfig: React.PropTypes.object
+    code: PropTypes.string,
+    scope: PropTypes.object,
+    noRender: PropTypes.bool,
+    babelConfig: PropTypes.object
   }
 
   static defaultProps = {
@@ -19,7 +20,7 @@ class Preview extends React.Component {
   }
 
   static contextTypes = {
-    playgroundCode: React.PropTypes.string,
+    playgroundCode: PropTypes.string,
   }
 
   state = {
