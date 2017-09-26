@@ -7,20 +7,17 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
 
 
-export default React.createClass({
-
-  getDefaultProps() {
-    return {
-      language: 'jsx',
-      theme: 'oceanicnext'
-    }
-  },
+export default class CodeBlock extends React.Component {
+  static defaultProps = {
+    language: 'jsx',
+    theme: 'oceanicnext'
+  };
 
   componentWillMount() {
     this.highlight()
-  },
+  }
 
-  componentWillReceivProps(nextProps) {
+  componentWillReceivProps = (nextProps) => {
     let lang = this.props.language;
     let code = this.props.code || this.props.children
     let nextLang = nextProps.language;
@@ -29,9 +26,9 @@ export default React.createClass({
     if (nextLang !== lang || nextCode !== code) {
       this.highlight(nextProps);
     }
-  },
+  };
 
-  highlight(props = this.props) {
+  highlight = (props = this.props) => {
     let lang = props.language;
     let code = props.code || props.children
     if (lang) {
@@ -40,7 +37,7 @@ export default React.createClass({
       if (lang)
         this.setState({ code: Prism.highlight(code, lang) });
     }
-  },
+  };
 
   render() {
     let { code } = this.state || {};
@@ -59,4 +56,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
