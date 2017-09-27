@@ -1,0 +1,31 @@
+{
+  "name": "@monastic.panic/component-playground",
+  "version": "3.2.1",
+  "description": "A component for rendering React components with editable source and live preview",
+  "main": "Playground.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jquense/component-playground.git"
+  },
+  "keywords": [
+    "React",
+    "playground",
+    "live",
+    "component"
+  ],
+  "author": "Ken Wheeler",
+  "license": "MIT",
+  "homepage": "https://github.com/jquense/component-playground#readme",
+  "dependencies": {
+    "babel-standalone": "^6.7.4",
+    "classnames": "^2.2.5",
+    "codemirror": "^5.13.4",
+    "lodash": "^3.10.0",
+    "prismjs": "^1.4.1",
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "react": ">=15.3.0",
+    "react-dom": ">=15.3.0"
+  }
+}

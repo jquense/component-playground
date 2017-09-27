@@ -26,7 +26,9 @@ class Preview extends React.Component {
   state = {
     error: null
   }
-
+  componentWillReceiveProps(_, nextContext = {}) {
+    this.contextChanged = this.context.playgroundCode !== nextContext.playgroundCode
+  }
   componentDidMount() {
     this.executeCode();
   }
@@ -36,8 +38,9 @@ class Preview extends React.Component {
 
     if (
       (this.props.code !== prevProps.code) ||
-      this.context.playgroundCode
+      this.contextChanged
     ) {
+      this.contextChanged = false
       this.executeCode();
     }
   }
