@@ -31,12 +31,12 @@ class Preview extends React.Component {
     this.executeCode();
   }
 
-  componentDidUpdate(prevProps, _, prevContext) {
+  componentDidUpdate(prevProps) {
     clearTimeout(this.t);
 
     if (
       (this.props.code !== prevProps.code) ||
-      (this.context.playgroundCode !== prevContext.playgroundCode)
+      this.context.playgroundCode
     ) {
       this.executeCode();
     }
